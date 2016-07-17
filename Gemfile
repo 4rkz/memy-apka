@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'twitter-bootstrap-rails', '~> 3.2', '>= 3.2.2'
 gem 'devise'
 gem 'rails_admin'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
