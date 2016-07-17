@@ -48,9 +48,9 @@
         <a class="navbar-brand" href="#">Kwejk</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-            <li><%= link_to "Link1", "/path1"  %></li>
-            <li><%= link_to "Link2", "/path2"  %></li>
-            <li><%= link_to "Link3", "/path3"  %></li>
+            <li><%= link_to "Poczekalnia", inactive_mems_path  %></li>
+            <li><%= link_to "Memy", mems_path %></li>
+            <li><%= link_to "Moje memy", my_mems_path  %></li>
           </ul>
         </div>
       </div>
@@ -66,10 +66,14 @@
           <div class="well sidebar-nav">
             <h3>Sidebar</h3>
             <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
+              <li class="nav-header">User Panel</li>
+              <% if user_signed_in? %>
+                <li><%= link_to "Edit account", edit_user_registration_path %></li>
+                <li><%= link_to "Logout", destroy_user_session_path  %></li>
+              <% else %>
+                <li><%= link_to "Login", new_user_session_path  %></li>
+                <li><%= link_to "Sign up", new_user_registration_path %></li>
+              <% end %>
             </ul>
           </div><!--/.well -->
         </div><!--/span-->

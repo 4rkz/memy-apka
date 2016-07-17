@@ -1,10 +1,20 @@
 class MemsController < ApplicationController
   before_action :set_mem, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, only: [:create, :my]
   # GET /mems
   # GET /mems.json
   def index
-    @mems = Mem.all
+    @mems = Mem.active
+  end
+
+  def my
+    @mems = current_user.mems
+    render :index
+  end
+
+  def inactive
+    @mems = Mem.inactive
+    render :index
   end
 
   # GET /mems/1
@@ -24,7 +34,7 @@ class MemsController < ApplicationController
   # POST /mems
   # POST /mems.json
   def create
-    @mem = Mem.new(mem_params)
+    @mem = current_user.mems.new(mem_params) #z automatu kojarzymy usera z memem
 
     respond_to do |format|
       if @mem.save
