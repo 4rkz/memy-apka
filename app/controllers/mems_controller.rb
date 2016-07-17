@@ -69,6 +69,6 @@ class MemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def mem_params
-      params.require(:mem).permit(:name, :description, :user_id)
+      params.require(:mem).permit(:name, :description, :user_id, :image)
     end
 end
