@@ -6,5 +6,9 @@ class Mem < ActiveRecord::Base
 
   validates_attachment :image,
                        :content_type => {:content_type => ["image/jpg", "image/gif", "image/png", "image/jpeg"]}
+  validates :name, presence: true
 
+  after_validation(on: :create) do
+    self.active = false
+  end
 end
